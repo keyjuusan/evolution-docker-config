@@ -24,11 +24,13 @@ services:
     image: evoapicloud/evolution-manager:latest
     restart: always
     ports:
-      - "4000:3000" # Ajustado asumiendo puerto interno 3000
+      - "4000:80" # Ajustado asumiendo puerto interno 3000
     environment:
       - EVOLUTION_API_URL=http://localhost:8080 # Ajusta el nombre de la variable según el Manager
     networks:
       - evolution-net
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
 
   redis:
     container_name: evolution_redis
