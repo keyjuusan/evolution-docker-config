@@ -16,15 +16,13 @@ services:
       - evolution-net
     env_file:
       - .env
-    expose:
-      - "8080"
 
   frontend:
     container_name: evolution_frontend
     image: evoapicloud/evolution-manager:latest
     restart: always
     ports:
-      - "3000:80"
+      - "3333:80"
     networks:
       - evolution-net
 
@@ -40,8 +38,6 @@ services:
       evolution-net:
         aliases:
           - evolution-redis
-    expose:
-      - "6379"
 
   evolution-postgres:
     container_name: evolution_postgres
