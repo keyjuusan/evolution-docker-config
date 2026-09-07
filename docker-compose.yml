@@ -9,7 +9,7 @@ services:
       - redis
       - evolution-postgres
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
     volumes:
       - evolution_instances:/evolution/instances
     networks:
@@ -22,10 +22,11 @@ services:
   frontend:
     container_name: evolution_frontend
     image: evoapicloud/evolution-manager:latest
+    restart: always
     ports:
-      - "4000:80"
-    depends_on:
-      - api
+      - "3000:80"
+    networks:
+      - evolution-net
 
   redis:
     container_name: evolution_redis
