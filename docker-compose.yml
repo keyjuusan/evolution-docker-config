@@ -7,7 +7,7 @@ services:
     restart: always
     depends_on:
       - redis
-      - evolution_postgres
+      - postgres
     # Eliminado 127.0.0.1 para permitir que Dokploy mapee el puerto públicamente si lo requieres
     ports:
       - "8080:8080" 
