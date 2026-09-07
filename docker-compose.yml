@@ -1,6 +1,6 @@
 services:
   evolution-api:
-    image: evoapicloud/evolution-api:homolog
+    image: evoapicloud/evolution-api:v2.3.7
     container_name: evolution_api
     restart: always
     env_file:
