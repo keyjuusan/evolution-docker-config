@@ -42,7 +42,7 @@ services:
         aliases:
           - evolution_redis
 
-  evolution-postgres:
+  postgres:
     container_name: evolution_postgres
     image: postgres:15
     restart: always
