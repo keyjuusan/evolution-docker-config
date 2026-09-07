@@ -27,7 +27,7 @@ services:
     environment:
       - VITE_EVOLUTION_API_URL=http://api:8080
     depends_on:
-      - evolution-api
+      - api
 
   redis:
     container_name: evolution_redis
