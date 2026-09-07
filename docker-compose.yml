@@ -21,7 +21,7 @@ services:
 
   frontend:
     container_name: evolution_frontend
-    image: evolutionapi/evolution-manager:latest
+    image: evoapicloud/evolution-manager:latest
     ports:
       - "4000:80"
     environment:
