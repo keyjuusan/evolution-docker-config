@@ -7,31 +7,30 @@ services:
     restart: always
     depends_on:
       - redis
-      - postgres
-    # Eliminado 127.0.0.1 para permitir que Dokploy mapee el puerto públicamente si lo requieres
+      - evolution-postgres
     ports:
-      - "8080:8080" 
+      - "127.0.0.1:8080:8080"
     volumes:
       - evolution_instances:/evolution/instances
     networks:
       - evolution-net
     env_file:
       - .env
+    expose:
+      - "8080"
 
   frontend:
     container_name: evolution_frontend
-    # CORREGIDO: Cambiado de 'homolog' (con bug) a la versión estable sin el error de Nginx
-    image: evoapicloud/evolution-manager:v2.3.5
+    image: evoapicloud/evolution-manager:latest
     restart: always
     ports:
-      - "3333:80"
+      - "3000:80"
     networks:
       - evolution-net
-    # Ya no necesitas parches de comandos 'sed' con esta imagen limpia
 
   redis:
     container_name: evolution_redis
-    image: redis:7
+    image: redis:latest
     restart: always
     command: >
       redis-server --port 6379 --appendonly yes
@@ -40,9 +39,11 @@ services:
     networks:
       evolution-net:
         aliases:
-          - evolution_redis
+          - evolution-redis
+    expose:
+      - "6379"
 
-  postgres:
+  evolution-postgres:
     container_name: evolution_postgres
     image: postgres:15
     restart: always
