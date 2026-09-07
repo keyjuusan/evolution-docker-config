@@ -21,7 +21,7 @@ services:
   frontend:
     container_name: evolution_frontend
     # CORREGIDO: Cambiado de 'homolog' (con bug) a la versión estable sin el error de Nginx
-    image: evoapicloud/evolution-manager:v2.1.2
+    image: evoapicloud/evolution-manager:v2.3.5
     restart: always
     ports:
       - "3333:80"
