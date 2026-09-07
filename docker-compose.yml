@@ -21,12 +21,13 @@ services:
 
   frontend:
     container_name: evolution_frontend
-    image: evoapicloud/evolution-manager:latest
-    restart: always
+    image: evolutionapi/evolution-manager:latest
     ports:
       - "4000:80"
-    networks:
-      - evolution-net
+    environment:
+      - VITE_EVOLUTION_API_URL=http://evolution-api:8080
+    depends_on:
+      - evolution-api
 
   redis:
     container_name: evolution_redis
