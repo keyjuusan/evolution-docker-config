@@ -25,6 +25,7 @@ services:
       - "3333:80"
     networks:
       - evolution-net
+    command: /bin/sh -c "sed -i 's/must-revalidate//g' /etc/nginx/conf.d/nginx.conf && nginx -g 'daemon off;'"
 
   redis:
     container_name: evolution_redis
