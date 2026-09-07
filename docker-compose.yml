@@ -24,7 +24,7 @@ services:
     image: evoapicloud/evolution-manager:latest
     restart: always
     ports:
-      - "3000:3000" # Ajustado asumiendo puerto interno 3000
+      - "4000:3000" # Ajustado asumiendo puerto interno 3000
     environment:
       - EVOLUTION_API_URL=http://localhost:8080 # Ajusta el nombre de la variable según el Manager
     networks:
