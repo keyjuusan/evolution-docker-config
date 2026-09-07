@@ -9,7 +9,7 @@ services:
       - redis
       - evolution-postgres
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
     volumes:
       - evolution_instances:/evolution/instances
     networks:
@@ -24,7 +24,9 @@ services:
     image: evoapicloud/evolution-manager:latest
     restart: always
     ports:
-      - "4000:80"
+      - "3000:3000" # Ajustado asumiendo puerto interno 3000
+    environment:
+      - EVOLUTION_API_URL=http://localhost:8080 # Ajusta el nombre de la variable según el Manager
     networks:
       - evolution-net
 
